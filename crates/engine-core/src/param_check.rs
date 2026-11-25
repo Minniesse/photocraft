@@ -190,7 +190,8 @@ mod tests {
     #[test]
     fn incomplete_docs_are_registered_closed_docs() {
         crate::install().unwrap();
-        for id in INCOMPLETE {
+        // Without the `plugins` feature the `plugin.*` commands are not registered at all.
+        for id in INCOMPLETE.iter().filter(|id| cfg!(feature = "plugins") || !id.starts_with("plugin.")) {
             let spec = crate::commands::find(id).unwrap_or_else(|| panic!("{id} is not registered"));
             assert!(param_schema::of(spec).is_some_and(|p| !p.open()), "{id}: open or unparsed docs are not checked anyway");
         }

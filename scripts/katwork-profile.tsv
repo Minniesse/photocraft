@@ -7,3 +7,6 @@ photocraft-web	wasm32	-	wasmi	present
 # The second web crate (it loads the wasm in parts) never held the host: vacuous rows, kept so a change is seen.
 photocraft-web-boot	wasm32	-	photocraft-plugins	absent
 photocraft-web-boot	wasm32	-	wasmi	absent
+# The gated crates themselves: each defaults to the host (an upstream build of the crate alone keeps it).
+photocraft-engine-core	native	-	photocraft-plugins	present
+photocraft-ui-egui	native	-	photocraft-plugins	present
