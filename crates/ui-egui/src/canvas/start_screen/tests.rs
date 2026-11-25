@@ -37,9 +37,7 @@ fn home_and_the_links_sit_in_a_rail_left_of_the_content_at_desktop_width() {
     }
     assert!(rect(&h, "Home").bottom() <= rect(&h, "Learn").top(), "Learn follows Home");
     let middle = h.ctx.content_rect().center().y;
-    for label in ["GitHub"] {
-        assert!(rect(&h, label).top() > middle, "{label} sits at the bottom of the rail");
-    }
+    assert!(rect(&h, "GitHub").top() > middle, "GitHub sits at the bottom of the rail");
     assert!(title.bottom() <= hint.top(), "the title is above the page");
 }
 

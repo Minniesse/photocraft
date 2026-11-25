@@ -70,8 +70,6 @@ mod tests {
         assert_eq!(opened.lock().unwrap().last().map(String::as_str), Some(TUTORIALS));
         // Every link is the upstream repository; the community and website links are gone.
         assert!(COMMANDS.iter().all(|(_, url)| url.starts_with(GITHUB)), "{COMMANDS:?}");
-        for gone in ["help.discord"] {
-            assert!(url_for(gone).is_none(), "{gone}");
-        }
+        assert!(url_for("help.discord").is_none(), "help.discord is gone");
     }
 }

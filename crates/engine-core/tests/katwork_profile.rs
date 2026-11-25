@@ -3,6 +3,8 @@
 //! an upstream build without that plug-in installed does. `cargo test -p photocraft-engine-core
 //! --no-default-features --test katwork_profile` runs both tests; the default build runs the second.
 
+#![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+
 use photocraft_engine_core::Session;
 use photocraft_engine_core::doc::{LayerContent, SmartFilter};
 use serde_json::json;
