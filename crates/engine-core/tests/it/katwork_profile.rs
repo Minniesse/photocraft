@@ -1,7 +1,7 @@
 //! The KatWork build profile: built without the `plugins` feature (no WebAssembly plug-in host), every
 //! `plugin.*` command is unknown, and a document that names a plug-in smart filter opens and draws as
 //! an upstream build without that plug-in installed does. `cargo test -p photocraft-engine-core
-//! --no-default-features --test katwork_profile` runs both tests; the default build runs the second.
+//! --no-default-features --test it katwork_profile` runs both tests; the default build runs the second.
 
 #![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
 
