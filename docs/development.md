@@ -118,7 +118,7 @@ Rust test and variable work on Windows with the native shell's environment-varia
 
 ## Fonts (craft-fonts)
 
-Font assets shared by the Crafting Apps live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts), never in this repo: don't commit font files here (Inter and JetBrains Mono in `assets/fonts/` are the only exceptions; new fonts go to craft-fonts).
+Font assets shared by the Craft apps live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts), never in this repo: don't commit font files here (Inter and JetBrains Mono in `assets/fonts/` are the only exceptions; new fonts go to craft-fonts).
 
 craft-fonts is an **optional build input**, never a Cargo dependency:
 
@@ -137,7 +137,7 @@ CRAFT_FONTS_DIR="$PWD/../craft-fonts" cargo test --workspace     # runs the Japa
 
 ## Translations (craft-i18n)
 
-The interface catalogs live in [storytold/craft-i18n](https://github.com/storytold/craft-i18n) (`locales/<code>/common.tsv`, shared by the Crafting Apps, and `photocraft.tsv`), never in this repo. Like craft-fonts it is an **optional build input**, never a Cargo dependency; `craft-i18n.rev` pins the commit CI, releases and the flatpak manifests use:
+The interface catalogs live in [storytold/craft-i18n](https://github.com/storytold/craft-i18n) (`locales/<code>/common.tsv`, shared by the Craft apps, and `photocraft.tsv`), never in this repo. Like craft-fonts it is an **optional build input**, never a Cargo dependency; `craft-i18n.rev` pins the commit CI, releases and the flatpak manifests use:
 
 ```sh
 git clone https://github.com/storytold/craft-i18n ../craft-i18n

@@ -1,1 +1,120 @@
 # Lines that may still name ArtCraft: <path><TAB><the whole line>. Each has its reason in KATWORK.md.
+apps/photocraft-cli/src/args.rs	/// (ArtCraft Launcher › Settings › AI agents), otherwise headless
+apps/photocraft-cli/tests/it/cli.rs	/// MCP client is the ArtCraft Launcher's job, so there is no `mcp install`, and plain `mcp` does
+apps/photocraft-cli/tests/it/main.rs	/// The CLI, kept away from this machine's own PhotoCraft settings, ArtCraft Launcher and feature
+apps/photocraft/src/build_flavor.rs	        assert!(result.unwrap_err().contains("ArtCraft Launcher"));
+apps/photocraft/src/build_flavor.rs	        (BuildFlavor::NightlyV1, false) => Err("Open PhotoCraft Nightly from ArtCraft Launcher".into()),
+apps/photocraft/src/main.rs	            // Agents in the open window. Behind the suite's AI-MCP flag the ArtCraft Launcher's
+apps/photocraft/src/main.rs	/// `Documents/ArtCraft/Agents/PhotoCraft`; Nightly uses its private profile's `AgentFiles`.
+apps/photocraft/src/main.rs	        let default = dir.join("ArtCraft").join("Agents").join("PhotoCraft");
+apps/photocraft/src/main.rs	        let stable = dir.join("redirected Documents/ArtCraft/Agents/PhotoCraft");
+apps/photocraft/src/main.rs	/// The app's name in its default agent folder, `Documents/ArtCraft/Agents/PhotoCraft`.
+apps/photocraft/src/profile_root.rs	            let machine = base.join("ArtCraft").join("PhotoCraft");
+apps/photocraft/src/profile_root.rs	        let nightly = data.join("ArtCraftLauncher/nightly/profiles/photocraft");
+apps/photocraft/src/profile_root.rs	        let per_user = local.join("Programs").join("ArtCraft").join("PhotoCraft");
+apps/photocraft/src/profile_root.rs	        let sibling = local.join("Programs").join("ArtCraft").join("ArtCraftLauncher").join("nightly").join("photocraft");
+apps/photocraft/src/profile_root.rs	        let stable = fixture.home().join("Documents/ArtCraft/Agents/PhotoCraft");
+apps/photocraft/src/profile_root.rs	        let stable = fixture.root.join("redirected documents/ArtCraft/Agents/PhotoCraft");
+apps/photocraft/src/profile_root.rs	        let valid = library.join("Application Support/ArtCraftLauncher/nightly/profiles/photocraft");
+apps/photocraft/src/profile_root.rs	                    roots.push(absolute(PathBuf::from(base), key)?.join("ArtCraft").join("PhotoCraft"));
+apps/photocraft/src/profile_root.rs	            roots.push(required_base(env, "LOCALAPPDATA")?.join("Programs").join("ArtCraft").join("PhotoCraft"));
+assets/app-icon/LICENSE.txt	in ArtCraft, then vectorised. No third-party material. Licensed like the rest of PhotoCraft,
+assets/app-icon/README.md	The owner's original drawing, made in ArtCraft (2880 px, engraving style, keyed to the palette),
+ATTRIBUTION.md	| `assets/app-icon/` (all files) | PhotoCraft app icon (nine-tailed kitsune) | The project owner (drawn in ArtCraft, vectorised) | Original work, see [`assets/app-icon/README.md`](assets/app-icon/README.md) | MIT OR Apache-2.0, [`assets/app-icon/LICENSE.txt`](assets/app-icon/LICENSE.txt) |
+ATTRIBUTION.md	| Embedded at build time from storytold/craft-i18n `locales/<code>/common.tsv` and `locales/<code>/photocraft.tsv` (revision in [`craft-i18n.rev`](craft-i18n.rev)) | UI translations (all languages) | craft-i18n and PhotoCraft contributors; per-language credits and provenance in [craft-i18n's ATTRIBUTION.md](https://github.com/storytold/craft-i18n/blob/main/ATTRIBUTION.md) | <https://github.com/storytold/craft-i18n> | MIT OR Apache-2.0; Copyright (c) 2026 ArtCraft Team and the craft-i18n contributors; notice in [NOTICE](NOTICE) |
+book/src/automation/mcp.md	claude mcp add photocraft -- "$env:LOCALAPPDATA\Programs\ArtCraft\PhotoCraft\photocraft-cli.exe" mcp --automation-read-root <dir> --automation-write-root <dir>
+book/src/automation/mcp.md	- **The open window:** plain `photocraft-cli mcp` finds the desktop application through the connection file it publishes while the person lets agents use it (ArtCraft Launcher › Settings › AI agents), before every tool call; while the app is closed it starts it, serves a headless session, or reports an error, as chosen in Preferences › AI Integrations. Without that consent, or with `--headless`, it is the headless session above.
+book/src/automation/mcp.md	The simplest setup needs no terminal: turn on ArtCraft Launcher › Settings › AI agents and click *Add* next to the AI app; that one entry reaches every Craft app. See [`docs/mcp.md`](../../../docs/mcp.md#connecting-the-desktop-app-no-terminal).
+book/src/automation/mcp.md	while the ArtCraft Launcher's agents switch is on):
+book/src/automation/mcp.md	| Windows (MSI) | `%LOCALAPPDATA%\Programs\ArtCraft\PhotoCraft\photocraft-cli.exe` by default (`C:\Program Files\ArtCraft\PhotoCraft\photocraft-cli.exe` for an all-users install, under `Program Files (x86)` instead for the 32-bit build, or wherever you installed it otherwise), not on `PATH` |
+book/src/security/automation-security.md	- ArtCraft Launcher › Settings › AI agents (off by default; one switch for every Craft app) opens that loopback
+.config/nextest.toml	# about 26 s. On artcraft-k8s-main it is typically 31-33 s, and under memory pressure it has
+.config/nextest.toml	# waited command runs long enough to cancel. On the artcraft k8s gate pods that
+crates/automation/Cargo.toml	# and the agent settings, the ArtCraft Launcher's switch and the connection file (`craft::automation::agents`).
+crates/automation/src/agent_link.rs	//! the ArtCraft Launcher's job (one entry for every Craft app).
+crates/automation/src/agent_link.rs	/// The id the ArtCraft Launcher's app list names PhotoCraft by.
+crates/automation/src/live.rs	    /// ([`agent_link::agents_allowed_now`]: the ArtCraft Launcher's switch); tests replace it.
+crates/automation/src/live.rs	    /// The default agent folder for an empty folder setting: `Documents/ArtCraft/Agents/PhotoCraft`
+crates/automation/src/server.rs	        description = "Where this app opens and saves files for agents. Put files the app should open in read_folder (or a folder below it) and find what it saves in write_folder. Both are usually the app's agent folder in Documents/ArtCraft/Agents; the person may have set others. null means the app has no such folder now. Paths passed to other tools may be relative to these folders."
+crates/automation/tests/it/mcp_live.rs	//! Plain `photocraft-cli mcp` with agents allowed (the ArtCraft Launcher's switch): the MCP server finds the desktop
+crates/automation/tests/it/mcp_live.rs	    // The ArtCraft Launcher's switch is the consent: the app is started on it alone.
+crates/automation/tests/it/mcp_live.rs	    // The machine's own ArtCraft Launcher and feature flags stay out of the tests: agents are
+crates/engine-core/src/prefs.rs	/// consent from before the ArtCraft Launcher's switch.
+crates/engine-core/src/prefs.rs	            dark_theme: "craft.artcraft".into(),
+crates/engine-core/src/prefs.rs	    /// Port ([`migrate_integrations`]); not in the dialog. With the flag the ArtCraft Launcher's
+crates/engine-core/src/prefs.rs	    /// The theme id of the dark slot (`craft.artcraft`, a library theme's id, ...); a name saved before theme ids reads as its id.
+crates/engine-core/src/prefs/tests.rs	    assert_eq!((p.interface.dark_theme.as_str(), p.interface.light_theme.as_str()), ("craft.artcraft", "craft.adwaita"));
+crates/engine-core/src/prefs/tests.rs	    assert_eq!(p.interface.dark_theme, "craft.artcraft");
+crates/engine-core/src/prefs/tests.rs	    assert_eq!(s.execute("prefs.get", json!({"path": "interface.theme"})).unwrap(), json!("craft.artcraft"));
+crates/engine-core/src/prefs/tests.rs	        [("pro", AppearanceMode::Dark, "craft.pro", "craft.pro"), ("classic", AppearanceMode::Light, "craft.artcraft", "craft.classic")]
+crates/engine-core/src/prefs/theme_ids.rs	        "promedium" | "promediumgray" | "medium" | "mediumgray" => ("craft.artcraft", true),
+crates/engine-core/src/select_mask_edits.rs	    /// Hosted ubuntu-24.04 is about 7s; artcraft-k8s-main took 26.86s on main (run 45091743078);
+crates/gpu/tests/it/pipelines.rs	            // context. This is most-likely a deadlock." on the artcraft k8s runners,
+crates/plugins/tests/it/abi.rs	    // "memory.grow forever" took 6-8s on the artcraft k8s gate pods and
+crates/ui-egui/src/app/framework.rs	        assert_eq!(crate::theme::AppTheme::pro_medium().id().as_str(), "craft.artcraft");
+crates/ui-egui/src/app/framework.rs	const DEFAULT_DARK: &str = "craft.artcraft";
+crates/ui-egui/src/control/inspect.rs	/// `AI-MCP` flag (`mcpFlag`) and the ArtCraft Launcher's switch (`launcher`).
+crates/ui-egui/src/dialogs/credits.rs	pub const BASED_ON: &str = "Based on PhotoCraft by the ArtCraft team (https://github.com/storytold/photocraft). This build is not an ArtCraft product.";
+crates/ui-egui/src/prefs/prefs_ui/agents.rs	//! Agents in the open window: the agent link follows Preferences › Integrations and the ArtCraft
+crates/ui-egui/src/prefs/prefs_ui/agents_tests.rs	//! ArtCraft Launcher's switch, and agent requests get the app's policy while it runs. The link, the
+crates/ui-egui/src/prefs/prefs_ui/agents_tests.rs	/// With the AI-MCP flag the ArtCraft Launcher's switch is the one consent: it starts the link,
+crates/ui-egui/src/prefs/prefs_ui/custom_rows.rs	    /// The suite's `AI-MCP` flag: the Agents page points to the ArtCraft Launcher's switch.
+crates/ui-egui/src/prefs/prefs_ui/fields.rs	    // ArtCraft Launcher's switch.
+crates/ui-egui/src/services.rs	    /// The ArtCraft Launcher's agents switch behind the suite's `AI-MCP` flag, watched on its own
+crates/ui-egui/src/theme.rs	            Palette::ProMedium => ("craft.artcraft", true),
+crates/ui-egui/src/updates_ui.rs	    let updater = app.updates_rt.updater.as_mut().ok_or("Nightly updates are managed by ArtCraft Launcher")?;
+docs/architecture.md	  - `agent_folders` (the folders agents may open from and save to; the default agent folder `Documents/ArtCraft/Agents/PhotoCraft` when the preferences name none),
+docs/contributing.md	**MCP in tests and agent sessions: `photocraft-cli mcp --headless`.** Plain `photocraft-cli mcp` works in the open PhotoCraft window while the ArtCraft Launcher's agents switch is on, and then may start PhotoCraft on the developer's machine when it is closed. Scripts, tests and agents that want a session without a window pass `--headless` (or use `photocraft-cli serve`); a test that runs the CLI also gives it its own settings, launcher and flags folders (`PHOTOCRAFT_CONFIG_DIR`, `CRAFT_MCP_DIR`, `CRAFT_FLAGS_FILE`, as `crate::command()` in `apps/photocraft-cli/tests/it/main.rs` does). To drive the running app on purpose, use `--control` (`docs/development.md`).
+docs/control-protocol.md	A folder left empty (and named by no flag) is the default agent folder, `Documents/ArtCraft/Agents/PhotoCraft` in the system's Documents folder (Windows, macOS, and Linux's XDG Documents folder, else `~/Documents`), created when first used; the same folder for both directions shares one capability. It comes from the suite's shared agent settings (craft-libs `craft-control`, `AgentSettings::folders`), so every Craft app has its own beside it. A default folder that can't be created is left out, so that direction fails closed. The MCP tool `agent_folders` tells an agent which folders it may use.
+docs/control-protocol.md	An app started from the Dock, the Start menu or a file manager has no command line. It starts and stops the control server while it runs. With the suite's `AI-MCP` flag, ArtCraft Launcher › Settings › AI agents › *Let AI agents use Craft apps* is the one switch (for every Craft app; PhotoCraft looks at it every 2 s); without the flag, as before, a saved Control Port. Turning it on or off, or changing the port or folders in Edit › Preferences › AI Integrations, applies at once, with no restart.
+docs/control-protocol.md	- **The open window** (plain `photocraft-cli mcp`): the bridge, with the address and token read before every tool call from `agent-connection.json` in the app's settings folder, with the suite's `AI-MCP` flag and while the person lets agents use the app. With agents allowed and the app closed, `integrations.whenAppClosed` decides (`launch`, the default: start it and wait up to 45 s; `headless`: headless, with `--automation-read-root` / `--automation-write-root` where given and the app's agent folder for each direction without one; `error`: fail with "PhotoCraft isn't running"), and `--when-closed` overrides it. Otherwise headless, as above (`--headless` forces that). The app publishes that file while agents may connect (the ArtCraft Launcher's switch; without the `AI-MCP` flag a saved Control Port), not with `--control`, and removes it when the connection stops; a file left by a crash fails the connection probe and counts as no app. See [MCP conventions](mcp.md#connecting-the-desktop-app-no-terminal).
+docs/control-protocol.md	`ui.inspect` reports the connection as `agentLink`: `port` while agents can connect, `launchFlags` when `--control` manages it, `error`, `mcpFlag` and `launcher` (the ArtCraft Launcher's switch is on).
+docs/development.md	- `agent_folders` (where the app opens and saves files for agents: `read_folder`, `write_folder`; a headless session with several read roots adds `read_folders`. With the preferences' folders empty this is the default agent folder, `Documents/ArtCraft/Agents/PhotoCraft`. In `--bridge` mode both are `null`, with a note: the app's own launch decides)
+docs/development.md	- **Headless:** `photocraft-cli mcp --headless --automation-read-root <project> --automation-read-root <library> --automation-write-root <project>`. Use `--headless` in scripts, tests and agent sessions: without it `mcp` works in the open window while the ArtCraft Launcher's agents switch is on, and may start PhotoCraft (When PhotoCraft Is Closed defaults to starting it). It drives an in-process engine session with ordered read directories and one write directory.
+docs/development.md	- **Live app, no flags:** with the `AI-MCP` flag, turn on ArtCraft Launcher › Settings › AI agents and add the MCP client there; plain `photocraft-cli mcp` then works in the open window. The app publishes its port and token file in `agent-connection.json` in the settings folder; `mcp` reads it on every call. Without a launcher, a scratch `CRAFT_MCP_DIR` with an `apps.json` naming `photocraft` (the format in storytold/craft-ai-integrations, crate `craft-ai-agents`) turns the switch on for a test. See [MCP conventions](mcp.md#connecting-the-desktop-app-no-terminal). Test it against a scratch settings folder with `PHOTOCRAFT_CONFIG_DIR`, which both the app and the CLI honour.
+docs/images/cpu-pixel-alignment/LICENSE-MIT	Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors
+docs/images/multi-channel-editing/LICENSE-MIT	Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors
+docs/mcp.md	in it, `ArtCraft`, for every installed Craft app (the `craft-ai-mcp` gateway, which starts
+docs/mcp.md	`%LOCALAPPDATA%\ArtCraft`), which every Craft app and the launcher read, or for one run with
+docs/mcp.md	**One switch, in the ArtCraft Launcher.** Settings › AI agents › **Let AI agents use Craft apps**
+docs/mcp.md	per-user `ArtCraft/flags.toml` (`AI-MCP = true` under `[flags]`; on Windows in
+docs/mcp.md	While the launcher's switch is on, its app list `ArtCraft/mcp/apps.json` (in the per-user local
+docs/mcp.md	without it, `mcp` works in the open PhotoCraft window while the ArtCraft Launcher's agents switch is
+docs/releasing.md	`assets/app-icon/photocraft.svg` is the canonical icon: the owner's ArtCraft drawing of a
+docs/releasing.md	  it installs per-user by default, without a UAC prompt, into `%LOCALAPPDATA%\Programs\ArtCraft\PhotoCraft`
+docs/releasing.md	  `Program Files\ArtCraft\PhotoCraft` (`Program Files (x86)` for the 32-bit build). It installs an advertised Start Menu shortcut associated with the
+docs/scorecard.md	| AUTO-MCP-LIVE | Connect an MCP client to the running app without a terminal (no flags, ports or tokens to copy) | done |  | 2026-11-12 (#5525, #11363, craft-ai-integrations#195): the ArtCraft Launcher's agents switch (the one consent; read through craft-ai-agents) starts and stops the loopback control server while the app runs (no restart) and publishes agent-connection.json; plain photocraft-cli mcp works in the open app on every call while agents are allowed (launch / headless / error while it is closed) and headless otherwise (--headless forces it); the launcher's Add buttons register every Craft app, PhotoCraft writes no client configuration. automation/tests/mcp_live.rs, ui-egui prefs_ui/agents_tests.rs, craft-automation tests/it/agents.rs |
+docs/user/AGENTS.md	    node <path to your artcraft-services checkout>/frontend/apps/artcraft-website-next/scripts/docs/core.mjs docs/user
+docs/user/AGENTS.md	The checker lives in storytold/artcraft-services. A CI check will be added once it is on that repo's main branch.
+.github/workflows/cache-prune.yml	    runs-on: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && 'artcraft-k8s-main' || 'ubuntu-24.04' }}
+.github/workflows/ci.yml	      os: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && '["artcraft-k8s-main"]' || '["ubuntu-24.04"]' }}
+.github/workflows/ci.yml	    runs-on: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && 'artcraft-k8s-main' || 'ubuntu-24.04' }}
+.github/workflows/ci.yml	    runs-on: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && 'artcraft-k8s-main' || 'ubuntu-latest' }}
+.github/workflows/docs.yml	      os: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && '["artcraft-k8s-main"]' || '["ubuntu-24.04"]' }}
+.github/workflows/packaging-lint.yml	    runs-on: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && 'artcraft-k8s-main' || 'ubuntu-latest' }}
+.github/workflows/release.yml	      ARTCRAFT_SERVICES_DISPATCH_TOKEN: ${{ secrets.ARTCRAFT_SERVICES_DISPATCH_TOKEN }}
+.github/workflows/windows-arm64.yml	      install-relative-path: Programs/ArtCraft/PhotoCraft
+LICENSE-MIT	Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors
+NOTICE	Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors.
+NOTICE	Interface translations (embedded at build time from storytold/craft-i18n locales/<code>/common.tsv and photocraft.tsv, at the commit in craft-i18n.rev) — MIT OR Apache-2.0, Copyright (c) 2026 ArtCraft Team and the craft-i18n contributors; the license texts are the same as LICENSE-MIT and LICENSE-APACHE. Per-language credits and provenance: https://github.com/storytold/craft-i18n/blob/main/ATTRIBUTION.md
+packaging/linux/AppRun	# `--cli mcp` this way (the ArtCraft Launcher's app list), since the mount point that holds
+packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml	  - --filesystem=xdg-data/ArtCraft/versions:ro
+packaging/linux/flatpak/ai.storyteller.photocraft.yml	  - --filesystem=xdg-data/ArtCraft/versions:ro
+packaging/windows/check-install-policy.ps1	      $directories['CraftSuiteFolder'][1] -ne 'ArtCraft') { throw 'Expected the app under the ArtCraft suite folder.' }
+packaging/windows/check-install-policy.ps1	  $machineFolder = (Join-Path $machineRoot "ArtCraft\$($policy.name)") + '\'
+packaging/windows/check-install-policy.ps1	  $userDefault = (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\$($policy.name)") + '\'
+packaging/windows/check-install-policy.ps1	    $wanted = if ($scope -eq '1') { $machineFolder } else { (Join-Path $env:LOCALAPPDATA "Programs\ArtCraft\$($policy.name)") + '\' }
+packaging/windows/check-install-policy.ps1	    if ($dirs['INSTALLFOLDER'][0] -ne 'CraftSuiteFolder' -or $dirs['CraftSuiteFolder'][1] -ne 'ArtCraft' -or
+packaging/windows/check-install-policy.ps1	      throw 'Launcher new-install folder must be under the per-user ArtCraft suite root.'
+packaging/windows/check-install-policy.ps1	    Write-Output 'PASS ArtCraft Launcher: per-user scope, suite folder, remembered/custom paths and existing registration. No installation performed.'
+packaging/windows/INSTALLATION.md	New installations default to the current account under `Programs\ArtCraft\<App>`.
+packaging/windows/install-policy.wxi	      <Control Id="Info" Type="Text" X="20" Y="50" Width="330" Height="30" Text="{\CraftScopeText}An update keeps the existing folder. New copies use the ArtCraft folder under Programs." />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder32" Value="[%ProgramFiles]\ArtCraft\PhotoCraft\" After="CraftDefaultMachineFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1 AND NOT VersionNT64" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder" Value="[%ProgramFiles(x86)]\ArtCraft\PhotoCraft\" After="CraftRestoreUserFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1 AND VersionNT64" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultMachineFolder" Value="[%ProgramW6432]\ArtCraft\PhotoCraft\" After="CraftRestoreUserFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS = 1" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultUserFolder" Value="[LocalAppDataFolder]Programs\ArtCraft\PhotoCraft\" After="CraftDefaultMachineFolder32" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS &lt;&gt; 1" />
+packaging/windows/install-policy.wxi	  <SetProperty Id="INSTALLFOLDER" Action="CraftDefaultUserFolder" Value="[LocalAppDataFolder]Programs\ArtCraft\PhotoCraft\" After="CraftDefaultMachineFolder" Sequence="ui" Condition="NOT INSTALLFOLDER AND ALLUSERS &lt;&gt; 1" />
+packaging/windows/photocraft.wxs	      <Directory Id="CraftSuiteFolder" Name="ArtCraft">
+README.md	Copyright (c) 2026 ArtCraft Team and the PhotoCraft contributors. Required notices are in [NOTICE](NOTICE).
+scorecard/automation.toml	note = "2026-11-12 (#5525, #11363, craft-ai-integrations#195): the ArtCraft Launcher's agents switch (the one consent; read through craft-ai-agents) starts and stops the loopback control server while the app runs (no restart) and publishes agent-connection.json; plain photocraft-cli mcp works in the open app on every call while agents are allowed (launch / headless / error while it is closed) and headless otherwise (--headless forces it); the launcher's Add buttons register every Craft app, PhotoCraft writes no client configuration. automation/tests/mcp_live.rs, ui-egui prefs_ui/agents_tests.rs, craft-automation tests/it/agents.rs"
+xtask/src/i18n_report.rs	                "AI apps such as Claude can open, edit and save documents in this window while ArtCraft Launcher › Settings › AI agents › Let AI agents use Craft apps is on. Only programs on this computer can connect."

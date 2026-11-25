@@ -6,7 +6,7 @@
 //! `craft-i18n.rev` to a commit that drops one fails that test until it is updated.
 //!
 //! The catalogs live in [storytold/craft-i18n](https://github.com/storytold/craft-i18n)
-//! (`locales/<code>/common.tsv`, shared by the Crafting Apps, and `photocraft.tsv`), not in this
+//! (`locales/<code>/common.tsv`, shared by the Craft apps, and `photocraft.tsv`), not in this
 //! repository. `build.rs` embeds them from `CRAFT_I18N_DIR` (CI and releases check out the commit
 //! in `craft-i18n.rev`); without it the build is English only. Lookup, fallback (PhotoCraft's rows
 //! over shared ones), plural forms (CLDR) and language names are the `craft-i18n` crate's
