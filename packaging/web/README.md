@@ -30,7 +30,7 @@ docker run -d --name photocraft-web --restart unless-stopped \
 ```
 
 Open **http://localhost:8080/**. The multi-stage `Dockerfile` builds the existing Rust/Wasm
-app with Trunk, including HEIF support, then copies only the static site into NGINX. The
+app with Trunk (without HEIF support: `apps/photocraft-web/index.html` leaves the `heif` feature off), then copies only the static site into NGINX. The
 runtime runs as the `nginx` user on port **8080**, with a `/healthz` endpoint and Docker
 health check. It serves precompressed gzip assets, the Wasm MIME type, immutable hashed
 assets, and an HTML page that revalidates after deployments. No Rust installation, Node.js,

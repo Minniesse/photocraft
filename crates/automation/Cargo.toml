@@ -7,7 +7,9 @@ license.workspace = true
 rust-version.workspace = true
 
 [features]
-default = []
+default = ["plugins"]
+# The WebAssembly plug-in host (photocraft-engine's `plugins`).
+plugins = ["photocraft-engine/plugins"]
 gpu = [
     "dep:photocraft-gpu",
     "dep:wgpu",

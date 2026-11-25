@@ -1,0 +1,9 @@
+# <package> <native|wasm32> <katwork-features|-> <crate> <present|absent>: see scripts/katwork-profile.sh.
+# The KatWork CLI and web builds leave the WebAssembly plug-in host (photocraft-plugins, wasmi) out.
+photocraft-cli	native	-	photocraft-plugins	present
+photocraft-cli	native	-	wasmi	present
+photocraft-web	wasm32	-	photocraft-plugins	present
+photocraft-web	wasm32	-	wasmi	present
+# The second web crate (it loads the wasm in parts) never held the host: vacuous rows, kept so a change is seen.
+photocraft-web-boot	wasm32	-	photocraft-plugins	absent
+photocraft-web-boot	wasm32	-	wasmi	absent

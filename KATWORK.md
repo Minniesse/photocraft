@@ -15,6 +15,23 @@ Based on PhotoCraft by the ArtCraft team (https://github.com/storytold/photocraf
 | Patch | Upstream PR |
 |---|---|
 | `chore(katwork): remove the ArtCraft marks` | not proposed upstream (the brand terms let a fork that proposes changes keep the marks; this one is a distributed modified version) |
+| `feat(katwork): plugins feature, on by default` | draft, not opened (in the fork PR body) |
+
+## The `plugins` feature
+
+The WebAssembly plug-in host (`photocraft-plugins`, the wasmi interpreter) is the Cargo feature `plugins`, on by default
+in `photocraft-engine-core` (where the host and the `plugin.*` commands live), `photocraft-engine`, `photocraft-ui-egui`
+(Filter › Plug-ins), `photocraft-automation`, the CLI, the web app and the desktop app, so an upstream build is unchanged.
+KatWork builds the CLI and the web app with `--no-default-features` (no other feature): `photocraft-plugins` and `wasmi`
+are then not in either graph (`scripts/katwork-profile.sh`, CI job `katwork-profile`); every `plugin.*` command is unknown,
+`plugin.install` with inline `data` or `dataBase64` included; a smart filter a document names as `plugin.run` draws
+nothing, as when its plug-in isn't installed, and stays in the document; the Plug-ins preference folder is not read.
+
+The CLI's other default, `gpu`, is left out by the same `--no-default-features` (KatWork never starts a Craft app with
+`--gpu`). `heif` stays off in both builds (it is not a default). This fork also removes the `data-cargo-features="heif"`
+that upstream's `apps/photocraft-web/index.html` sets, so the fork's own web build equals KatWork's (HEIF off); upstream's
+official web build turns HEIF on there. `apps/photocraft-web-boot` (the second web crate, which loads the wasm in parts)
+never held the host; its rows in `scripts/katwork-profile.tsv` are vacuous and say so.
 
 ## The marks
 

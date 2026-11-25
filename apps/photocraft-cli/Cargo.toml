@@ -7,7 +7,9 @@ license.workspace = true
 build = "build.rs"
 
 [features]
-default = ["gpu"]
+default = ["gpu", "plugins"]
+# The WebAssembly plug-in host and the `plugin.*` commands.
+plugins = ["photocraft-engine/plugins", "photocraft-automation/plugins"]
 # Open HEIC/HEIF photos (the optional craft-heif crate). Not default so distributors choose
 # it; official builds (CI, packaging/, release) build with `--features heif`.
 heif = ["photocraft-codecs/heif"]
@@ -30,7 +32,7 @@ name = "gpu_bench"
 required-features = ["gpu"]
 
 [dependencies]
-photocraft-automation = { path = "../../crates/automation" }
+photocraft-automation = { path = "../../crates/automation", default-features = false }
 # The suite's AI-MCP flag (`craft::automation::agents::mcp_flag`): `mcp` reaches the open window only with it.
 craft = { workspace = true, features = ["automation-agents"] }
 photocraft-doc = { workspace = true }

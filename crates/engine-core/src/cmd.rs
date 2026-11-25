@@ -87,6 +87,9 @@ pub mod mask_view_cmds;
 pub mod migrate_cmds;
 pub mod mode_cmds;
 pub mod multichannel_cmds;
+#[cfg(not(feature = "plugins"))]
+#[path = "cmd/name_rules.rs"]
+mod name_rules;
 #[cfg(test)]
 mod new_document_history_name_tests;
 mod ops;
@@ -97,6 +100,10 @@ pub mod perspective_crop_cmds;
 #[cfg(test)]
 mod perspective_crop_refuse_tests;
 pub mod photo_cmds;
+#[cfg(feature = "plugins")]
+pub mod plugin_cmds;
+#[cfg(not(feature = "plugins"))]
+#[path = "cmd/plugin_cmds_off.rs"]
 pub mod plugin_cmds;
 pub mod preset_import_cmds;
 pub mod print_cmds;
