@@ -15,7 +15,8 @@ fn every_command_has_its_place_in_the_registry_order() {
         std::fs::write(path, ids.iter().map(|id| format!("{id}\n")).collect::<String>()).expect("write command_ids.txt");
         return;
     }
-    let listed: Vec<&str> = super::ORDER.lines().collect();
+    // Without the `plugins` feature the `plugin.*` commands are not registered; their lines stay for the default build.
+    let listed: Vec<&str> = super::ORDER.lines().filter(|id| cfg!(feature = "plugins") || !id.starts_with("plugin.")).collect();
     for id in &ids {
         assert!(listed.contains(id), "command {id} has no place in the order{}{HINT}", table_of(id));
     }
