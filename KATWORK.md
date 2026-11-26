@@ -16,6 +16,8 @@ Based on PhotoCraft by the ArtCraft team (https://github.com/storytold/photocraf
 |---|---|
 | `chore(katwork): remove the ArtCraft marks` | not proposed upstream (the brand terms let a fork that proposes changes keep the marks; this one is a distributed modified version) |
 | `feat(katwork): plugins feature, on by default` | draft, not opened (in the fork PR body) |
+| `feat(katwork): font-download feature, on by default` | draft, not opened (in the fork PR body) |
+| `feat(katwork): hide the plug-in folder preferences without plugins` | draft, not opened (in the fork PR body) |
 
 ## The `plugins` feature
 
@@ -25,13 +27,28 @@ in `photocraft-engine-core` (where the host and the `plugin.*` commands live), `
 KatWork builds the CLI and the web app with `--no-default-features` (no other feature): `photocraft-plugins` and `wasmi`
 are then not in either graph (`scripts/katwork-profile.sh`, CI job `katwork-profile`); every `plugin.*` command is unknown,
 `plugin.install` with inline `data` or `dataBase64` included; a smart filter a document names as `plugin.run` draws
-nothing, as when its plug-in isn't installed, and stays in the document; the Plug-ins preference folder is not read.
+nothing, as when its plug-in isn't installed, and stays in the document; the Plug-ins preference folder is not read, and
+Preferences › Plugins does not show Use Additional Plug-ins Folder and Additional Plug-ins Folder (`prefs::PLUGINS_ONLY`;
+the page stays for Enable Generator). Filter › Plug-ins lists nothing.
 
 The CLI's other default, `gpu`, is left out by the same `--no-default-features` (KatWork never starts a Craft app with
 `--gpu`). `heif` stays off in both builds (it is not a default). This fork also removes the `data-cargo-features="heif"`
 that upstream's `apps/photocraft-web/index.html` sets, so the fork's own web build equals KatWork's (HEIF off); upstream's
 official web build turns HEIF on there. `apps/photocraft-web-boot` (the second web crate, which loads the wasm in parts)
 never held the host; its rows in `scripts/katwork-profile.tsv` are vacuous and say so.
+
+## The `font-download` feature
+
+`photocraft-text` reads the axes and named instances of variable faces. Upstream takes the readers from craft's font
+manager, which also brings the font store (`craft-font-store`) and its downloader (`ureq`). The Cargo feature
+`font-download`, on by default in `photocraft-text`, `photocraft-engine-core`, `photocraft-engine`,
+`photocraft-automation` and the CLI, turns craft's `font-manager` on; without it the text crate reads the axes itself with
+skrifa (`crates/text/src/fonts/axes_off.rs`, the same types and results). KatWork's CLI build (`--no-default-features`)
+then has neither `craft-font-store` nor `ureq` (rows in `scripts/katwork-profile.tsv`). The interface (`photocraft-ui-egui`)
+turns the feature on, as its font picker and Glyphs panel use craft's font manager, so the web build keeps the store's
+built-in font index; `ureq` is native only and was never in the web build (a vacuous row). PhotoCraft has no font download
+command or menu item; the gate test (`katwork_variable_axes_read_with_or_without_font_download`) checks that variable
+faces still list their axes and instances without the feature.
 
 ## The marks
 
