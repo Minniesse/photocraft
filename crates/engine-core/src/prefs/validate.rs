@@ -48,7 +48,16 @@ pub const HIDDEN_UNTIL_IMPLEMENTED: &[&str] = &[
 
 /// Is the preference at `path` (`"section.key"`) hidden from the Preferences dialog?
 pub fn is_hidden(path: &str) -> bool {
-    HIDDEN_UNTIL_IMPLEMENTED.contains(&path) || (!cfg!(target_os = "linux") && LINUX_ONLY.contains(&path))
+    HIDDEN_UNTIL_IMPLEMENTED.contains(&path) || (!cfg!(target_os = "linux") && LINUX_ONLY.contains(&path)) || left_out_of_build(path)
+}
+
+/// Preferences of the WebAssembly plug-in host: a build without the `plugins` feature has no host,
+/// so the dialog doesn't show them. They still load, save and round-trip.
+pub const PLUGINS_ONLY: &[&str] = &["plugIns.useAdditionalPluginsFolder", "plugIns.additionalPluginsFolder"];
+
+/// Whether the preference at `path` belongs to a feature this build leaves out ([`PLUGINS_ONLY`]).
+pub fn left_out_of_build(path: &str) -> bool {
+    !cfg!(feature = "plugins") && PLUGINS_ONLY.contains(&path)
 }
 
 /// Preferences that only do something on Linux; the dialog doesn't show them elsewhere. They
