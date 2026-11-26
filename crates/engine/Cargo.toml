@@ -13,7 +13,9 @@ workspace = true
 path = "src/facade.rs"
 
 [features]
-default = ["plugins"]
+default = ["font-download", "plugins"]
+# The font store's downloader (photocraft-engine-core's `font-download`).
+font-download = ["photocraft-engine-core/font-download"]
 # The WebAssembly plug-in host (photocraft-engine-core's `plugins`).
 plugins = ["photocraft-engine-core/plugins"]
 # Real-file corpus tests (opt-in; `cargo xtask test-corpus`). Fail when the corpus is missing.

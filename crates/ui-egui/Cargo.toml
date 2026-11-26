@@ -33,7 +33,7 @@ photocraft-engine = { workspace = true }
 photocraft-io = { workspace = true }
 photocraft-plugins = { workspace = true, optional = true }
 photocraft-algo = { workspace = true }
-photocraft-text = { workspace = true }
+photocraft-text = { workspace = true, features = ["font-download"] }
 photocraft-vector = { workspace = true }
 # Only MAX_BRUSH_SIZE: `ui.set brushSize` validates against the Brush Settings range up front.
 photocraft-paint = { workspace = true }

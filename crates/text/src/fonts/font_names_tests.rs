@@ -468,3 +468,18 @@ fn postscript_name_of_a_named_instance_lays_out_at_that_instance() {
     assert!(explicit < family * 0.8, "wdth 75 is narrower: {explicit} vs {family}");
     assert!((instance - explicit).abs() < 0.5, "instance: {instance} px, its axes: {explicit} px, default instance: {family} px");
 }
+
+/// The KatWork CLI builds this crate without `font-download` (no craft font manager, so no font
+/// store downloader): a variable face still lists its axes and named instances, read here instead.
+#[test]
+fn katwork_variable_axes_read_with_or_without_font_download() {
+    let mut db = FontDb::new();
+    db.register_font_data(instance_font(&INTER_REGULAR));
+    let faces = db.faces("Instance Test");
+    let face = faces.first().expect("the synthesized variable face is listed");
+    let tags: Vec<[u8; 4]> = face.font_axes.iter().map(|a| a.tag).collect();
+    assert_eq!(tags, [*b"wght", *b"wdth"], "{:?}", face.font_axes);
+    assert!(face.font_axes.iter().all(|a| a.min < a.max && !a.name.is_empty()), "{:?}", face.font_axes);
+    let names: Vec<&str> = face.instances.iter().map(|i| i.name.as_str()).collect();
+    assert_eq!(names, ["Light Condensed", "Heavy"]);
+}

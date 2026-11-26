@@ -32,7 +32,7 @@ photocraft-gpu = { path = "crates/gpu" }
 photocraft-paint = { path = "crates/paint" }
 photocraft-algo = { path = "crates/algo" }
 photocraft-io = { path = "crates/io" }
-photocraft-text = { path = "crates/text" }
+photocraft-text = { path = "crates/text", default-features = false }
 photocraft-vector = { path = "crates/vector" }
 photocraft-format = { path = "crates/format" }
 # The engine, UI and automation crates default to the WebAssembly plug-in host (`plugins`); each member

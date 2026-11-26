@@ -10,3 +10,10 @@ photocraft-web-boot	wasm32	-	wasmi	absent
 # The gated crates themselves: each defaults to the host (an upstream build of the crate alone keeps it).
 photocraft-engine-core	native	-	photocraft-plugins	present
 photocraft-ui-egui	native	-	photocraft-plugins	present
+# craft's font store with its downloader (craft-font-store, ureq; gate `font-download`).
+photocraft-cli	native	-	craft-font-store	present
+photocraft-cli	native	-	ureq	present
+# The web interface's font picker and Glyphs panel use craft's font manager, which holds the store's
+# built-in index (craft-font-store stays); its downloader (ureq) is native only: a vacuous row.
+photocraft-web	wasm32	-	ureq	absent
+photocraft-engine-core	native	-	craft-font-store	present

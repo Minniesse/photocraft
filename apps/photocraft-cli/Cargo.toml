@@ -7,7 +7,9 @@ license.workspace = true
 build = "build.rs"
 
 [features]
-default = ["gpu", "plugins"]
+default = ["font-download", "gpu", "plugins"]
+# craft's font store with its downloader (craft-font-store, ureq). The KatWork build turns it off.
+font-download = ["photocraft-engine/font-download", "photocraft-automation/font-download"]
 # The WebAssembly plug-in host and the `plugin.*` commands.
 plugins = ["photocraft-engine/plugins", "photocraft-automation/plugins"]
 # Open HEIC/HEIF photos (the optional craft-heif crate). Not default so distributors choose

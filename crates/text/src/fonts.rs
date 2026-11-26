@@ -10,6 +10,9 @@ use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::{Arc, LazyLock};
 
 use craft::font_catalog::{Catalog, FontEnv, Limits, Os, Source};
+#[cfg(not(feature = "font-download"))]
+use axes::{FontAxis, NamedInstance, read_axes, read_named_instances};
+#[cfg(feature = "font-download")]
 use craft::font_manager::axes::{FontAxis, NamedInstance, read_axes, read_named_instances};
 use parley::FontContext;
 use parley::fontique::{Blob, Collection, CollectionOptions, FontInfoOverride, FontStyle, FontWeight, FontWidth, GenericFamily, SourceCache};
@@ -1267,6 +1270,10 @@ mod tests {
         assert!(missing.is_empty(), "the Catalog lists these families, the font list lacks them: {missing:?}");
     }
 }
+
+#[cfg(not(feature = "font-download"))]
+#[path = "fonts/axes_off.rs"]
+mod axes;
 
 #[cfg(test)]
 mod font_names_tests;

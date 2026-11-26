@@ -8,7 +8,10 @@ license.workspace = true
 workspace = true
 
 [features]
-default = ["plugins"]
+default = ["font-download", "plugins"]
+# craft's font manager with the font store's downloader (photocraft-text's `font-download`). The KatWork
+# CLI turns it off; variable faces' axes are then read without it.
+font-download = ["photocraft-text/font-download"]
 # The WebAssembly plug-in host (photocraft-plugins, wasmi) and the `plugin.*` commands. Without it
 # every `plugin.*` command is unknown and a smart filter that names a plug-in draws nothing.
 plugins = ["dep:photocraft-plugins"]
