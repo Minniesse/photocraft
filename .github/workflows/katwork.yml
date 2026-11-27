@@ -36,3 +36,9 @@ jobs:
           set -o pipefail
           cargo test --locked -p photocraft-text --no-default-features --lib katwork 2>&1 | tee katwork-text-test.log
           grep -E 'test result: ok\. [1-9][0-9]* passed' katwork-text-test.log
+      - name: The plug-in folder preference is hidden, with the gate off
+        # One test binary (the UI library); fail if it ran no test.
+        run: |
+          set -o pipefail
+          cargo test --locked -p photocraft-ui-egui --no-default-features --lib katwork_hidden_plugin_folder_preferences 2>&1 | tee katwork-ui-test.log
+          grep -E 'test result: ok\. [1-9][0-9]* passed' katwork-ui-test.log
