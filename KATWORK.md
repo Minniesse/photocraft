@@ -70,7 +70,8 @@ ArtCraft and is not in `scripts/katwork-marks/allow`, or when an image below is 
   identifiers, not marks, and changing them would break upgrades of existing installs.
 - The app icon's attribution (`ATTRIBUTION.md` row, `assets/app-icon/LICENSE.txt`, `assets/app-icon/README.md`,
   `docs/releasing.md`): the icon is original artwork by the project owner, drawn in ArtCraft; these author and provenance lines
-  are licence and attribution notices. The icon itself is kept (R43) and shows no mark.
+  are licence and attribution notices. The icon itself is kept, as the founder decided that the README keeps its
+  screenshots and the original icon; it shows no mark.
 - Per-user folders the app and the suite use (`Documents/ArtCraft/Agents/PhotoCraft`, the `ArtCraft/flags.toml` suite flags file,
   the Windows `ArtCraft\PhotoCraft` program folder) in `apps/photocraft`, `crates/automation`, `docs/`: paths, kept like the
   installer paths; renaming them would move existing users' files.
