@@ -1,7 +1,7 @@
 # PhotoCraft app icon
 
 A **nine-tailed kitsune with a brow diamond**: an engraving portrait, seated, looking back at the
-viewer, in the Crafting Apps' owl-template framing (full-bleed field, head and body filling the
+viewer, in the Craft apps' owl-template framing (full-bleed field, head and body filling the
 tile, tails running off the edges).
 
 ## Palette
@@ -18,7 +18,7 @@ Exactly three colours:
 
 A 512-unit tile (`viewBox="0 0 512 512"`), rounded square with `rx=112`, no border. The macOS
 renders pad it onto Apple's 824/1024 icon grid; the Windows and Linux renders use the whole tile,
-as the other Crafting Apps do.
+as the other Craft apps do.
 
 ## Provenance
 

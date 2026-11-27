@@ -32,16 +32,18 @@ photocraft-gpu = { path = "crates/gpu" }
 photocraft-paint = { path = "crates/paint" }
 photocraft-algo = { path = "crates/algo" }
 photocraft-io = { path = "crates/io" }
-photocraft-text = { path = "crates/text" }
+photocraft-text = { path = "crates/text", default-features = false }
 photocraft-vector = { path = "crates/vector" }
 photocraft-format = { path = "crates/format" }
-photocraft-automation = { path = "crates/automation" }
+# The engine, UI and automation crates default to the WebAssembly plug-in host (`plugins`); each member
+# that wants it asks for it, so a build with `--no-default-features` on an app leaves the host out.
+photocraft-automation = { path = "crates/automation", default-features = false }
 photocraft-plugins = { path = "crates/plugins" }
-photocraft-engine = { path = "crates/engine" }
-photocraft-engine-core = { path = "crates/engine-core" }
+photocraft-engine = { path = "crates/engine", default-features = false }
+photocraft-engine-core = { path = "crates/engine-core", default-features = false }
 photocraft-engine-paint = { path = "crates/engine-paint" }
 photocraft-engine-vector = { path = "crates/engine-vector" }
-photocraft-ui-egui = { path = "crates/ui-egui" }
+photocraft-ui-egui = { path = "crates/ui-egui", default-features = false }
 photocraft-testkit = { path = "crates/testkit" }
 photocraft-tablet = { path = "crates/tablet" }
 photocraft-ipp = { path = "crates/ipp" }

@@ -145,7 +145,7 @@ remaining gaps in #1606 stay tracked with per-sample corpus ceilings.
 
 A PDF with spot plates (see Photoshop PDF above) carries, in the catalog's `/Metadata` XMP packet
 (the document's own packet when it has one), one `rdf:Description` under the namespace
-`http://ns.getartcraft.com/photocraft/spot-plates/1.0/` (prefix `pcsp`), so a converter can
+that craft-pdf names in `SPOT_PLATES_NAMESPACE` (prefix `pcsp`), so a converter can
 rebuild each spot channel with its real ink colour, which the `/Separation` colour space's CMYK
 alternate cannot carry. `pcsp:plates` is an `rdf:Seq` in paint order, one `rdf:li`
 (`rdf:parseType="Resource"`) per plate:

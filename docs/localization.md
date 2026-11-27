@@ -2,7 +2,7 @@
 
 PhotoCraft uses the same Rust catalog implementation in the native egui shell and the
 WebAssembly build: the `craft-i18n` crate (craft-libs) over the catalogs of
-[storytold/craft-i18n](https://github.com/storytold/craft-i18n), shared by the Crafting Apps.
+[storytold/craft-i18n](https://github.com/storytold/craft-i18n), shared by the Craft apps.
 English source strings are lookup keys. UTF-8 TSV catalogs (`locales/<code>/photocraft.tsv`, over
 the shared `common.tsv`) supply plain, contextual, command-ID and plural translations; missing
 entries fall back to English. The build embeds them from the checkout `CRAFT_I18N_DIR` names, at

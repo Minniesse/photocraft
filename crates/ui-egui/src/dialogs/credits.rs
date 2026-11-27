@@ -77,28 +77,26 @@ pub fn credits() -> Credits {
     Credits::new(people, models, TOTAL_COMMITS)
 }
 
-/// The About tab's contents: name, blurb, version, the community button and the project links.
+/// The About tab's contents: name, blurb, version, the project link and the "Based on" line.
 pub fn about_info(_app: &PhotocraftApp) -> AboutInfo {
     about_info_for(crate::os_window::identity(), photocraft_engine::build_info::long_version(), photocraft_engine::build_info::git_sha())
 }
 
 fn about_info_for(identity: crate::os_window::LaunchIdentity, version: String, commit: Option<&str>) -> AboutInfo {
     let nightly = identity == crate::os_window::LaunchIdentity::NightlyV1;
-    let mut links = vec![
-        AboutLink::new(tl!("PhotoCraft website"), crate::links::APP_PAGE),
-        AboutLink::new(tl!("GitHub"), crate::links::GITHUB),
-        AboutLink::new(tl!("ArtCraft"), crate::links::ARTCRAFT_WEBSITE),
-    ];
+    let mut links = vec![AboutLink::new(tl!("GitHub"), crate::links::GITHUB)];
     if nightly {
         // Opens only after a user click. No diagnostics, paths or documents are sent automatically.
         links.push(AboutLink::new(tl!("Report a problem"), crate::links::ISSUES));
     }
     let version = if nightly { nightly_about_version(&version, commit) } else { version };
     AboutInfo::new(crate::os_window::name_for(identity), tl!("PhotoCraft — an open-source, native image editor written in Rust."), version)
-        .community(AboutLink::new(tl!("Join us on Discord"), crate::links::DISCORD))
         .links(links)
-        .built_with("egui · wgpu · photocraft-engine")
+        .built_with(format!("{BASED_ON}\negui · wgpu · photocraft-engine"))
 }
+
+/// The plain-text line that says what this build is based on (no mark, no community link).
+pub const BASED_ON: &str = "Based on PhotoCraft by the ArtCraft team (https://github.com/storytold/photocraft). This build is not an ArtCraft product.";
 
 fn nightly_about_version(version: &str, commit: Option<&str>) -> String {
     format!("{version}\nCommit: {}", commit.filter(|value| !value.is_empty()).unwrap_or("unavailable"))
@@ -140,11 +138,10 @@ mod nightly_about_tests {
         let expected = AboutInfo::new("PhotoCraft", "", "0.23.1 (dev build)".to_owned());
         assert_eq!(info.app_name, expected.app_name);
         assert_eq!(info.version, expected.version);
-        assert_eq!(
-            info.links.iter().map(|link| link.url.as_str()).collect::<Vec<_>>(),
-            [crate::links::APP_PAGE, crate::links::GITHUB, crate::links::ARTCRAFT_WEBSITE]
-        );
-        assert_eq!(info.community.unwrap().url, crate::links::DISCORD);
+        assert_eq!(info.links.iter().map(|link| link.url.as_str()).collect::<Vec<_>>(), [crate::links::GITHUB]);
+        // No mark and no community button; the plain-text "Based on" line once.
+        assert!(info.mark.is_none() && info.part_of.is_none() && info.community.is_none());
+        assert_eq!(info.built_with.as_str().lines().filter(|l| *l == BASED_ON).count(), 1, "{:?}", info.built_with);
     }
 
     #[test]
@@ -155,9 +152,9 @@ mod nightly_about_tests {
         let expected = AboutInfo::new("PhotoCraft Nightly", "", nightly_about_version(version, Some(commit)));
         assert_eq!(info.app_name, expected.app_name);
         assert_eq!(info.version, expected.version);
-        assert_eq!(info.links.len(), 4);
+        assert_eq!(info.links.len(), 2);
         assert_eq!(info.links.last().unwrap().url, crate::links::ISSUES);
-        assert_eq!(info.community.unwrap().url, crate::links::DISCORD);
+        assert!(info.community.is_none());
     }
 
     #[test]

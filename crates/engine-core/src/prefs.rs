@@ -578,7 +578,9 @@ pub use shortcuts::{
 };
 use store::read_lenient;
 pub use store::{InvalidPref, PREFS_VERSION, PrefsStore, read_section};
-pub use validate::{HIDDEN_UNTIL_IMPLEMENTED, LINUX_ONLY, SECTIONS, choices, gpu_adapter_matches, is_color, is_hidden, parse_hex, range};
+pub use validate::{
+    HIDDEN_UNTIL_IMPLEMENTED, LINUX_ONLY, PLUGINS_ONLY, SECTIONS, choices, gpu_adapter_matches, is_color, is_hidden, left_out_of_build, parse_hex, range,
+};
 #[path = "prefs/theme_ids.rs"]
 pub mod theme_ids;
 use validate::{check_value, get_path, keyed, set_path};

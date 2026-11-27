@@ -393,7 +393,8 @@ fn the_plates_are_described_in_xmp_with_their_ink_colour_and_solidity() {
     assert!(has(pdf, "/Type /Catalog /Pages 2 0 R /Metadata "), "the catalog points at the metadata stream");
     assert!(has(pdf, "/Type /Metadata /Subtype /XML /Length "), "an unfiltered XMP stream");
     let xmp = xmp_of(pdf);
-    assert!(xmp.contains("xmlns:pcsp=\"http://ns.getartcraft.com/photocraft/spot-plates/1.0/\""), "{xmp}");
+    // The namespace is the shared PDF writer's (craft-pdf), named once there.
+    assert!(xmp.contains(&format!("xmlns:pcsp=\"{}\"", craft_pdf::write_raster::SPOT_PLATES_NAMESPACE)), "{xmp}");
     let lab = photocraft_color::convert::srgb_to_lab([0.2, 0.3, 0.4]);
     let want = format!(
         "<rdf:li rdf:parseType=\"Resource\">\n      <pcsp:index>0</pcsp:index>\n      <pcsp:name>Black (Ink) #1/ü &amp; &lt;x&gt;</pcsp:name>\n      <pcsp:labL>{:.2}</pcsp:labL>\n      <pcsp:labA>{:.2}</pcsp:labA>\n      <pcsp:labB>{:.2}</pcsp:labB>\n      <pcsp:srgb>#334D66</pcsp:srgb>\n      <pcsp:solidity>35</pcsp:solidity>\n     </rdf:li>",

@@ -76,14 +76,9 @@ fn links() -> [StartLink; 2] {
     ]
 }
 
-/// The community pages, at the bottom of the Home rail.
-fn footer_links() -> [StartLink; 3] {
-    [
-        StartLink::url(tl!("Website"), Some(IconId::new("link")), crate::links::APP_PAGE),
-        // A speech bubble and a chain link, as the rail showed before the framework move (#15449).
-        StartLink::url(tl!("Discord"), Some(IconId::new("note")), crate::links::DISCORD),
-        StartLink::url(tl!("GitHub"), Some(IconId::new("link_layers")), crate::links::GITHUB),
-    ]
+/// The project page, at the bottom of the Home rail.
+fn footer_links() -> [StartLink; 1] {
+    [StartLink::url(tl!("GitHub"), Some(IconId::new("link_layers")), crate::links::GITHUB)]
 }
 
 /// Shows Home over the open documents, or leaves it for them: the rule of the options bar's Home button, the Home

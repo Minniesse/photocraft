@@ -1,0 +1,44 @@
+# KatWork fork checks (see KATWORK.md). Actions are pinned by commit.
+name: KatWork
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  no-marks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: bash scripts/check-no-marks.sh --self-test
+      - run: bash scripts/check-no-marks.sh
+  katwork-profile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: 1.97.1
+      - name: The gated crates are not in the KatWork build graphs
+        run: bash scripts/katwork-profile.sh
+      - name: The gate test, with the gate off
+        # Fail if it ran no test (zero tests pass green).
+        run: |
+          set -o pipefail
+          cargo test --locked -p photocraft-engine-core --no-default-features --test it katwork_profile 2>&1 | tee katwork-profile-test.log
+          grep -E 'test result: ok\. [1-9][0-9]* passed' katwork-profile-test.log
+      - name: The font-download gate test, with the gate off
+        run: |
+          set -o pipefail
+          cargo test --locked -p photocraft-text --no-default-features --lib katwork 2>&1 | tee katwork-text-test.log
+          grep -E 'test result: ok\. [1-9][0-9]* passed' katwork-text-test.log
+      - name: The plug-in folder preference is hidden, with the gate off
+        # One test binary (the UI library); fail if it ran no test.
+        run: |
+          set -o pipefail
+          cargo test --locked -p photocraft-ui-egui --no-default-features --lib katwork_hidden_plugin_folder_preferences 2>&1 | tee katwork-ui-test.log
+          grep -E 'test result: ok\. [1-9][0-9]* passed' katwork-ui-test.log

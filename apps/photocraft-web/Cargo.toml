@@ -7,6 +7,9 @@ license.workspace = true
 publish = false
 
 [features]
+default = ["plugins"]
+# The WebAssembly plug-in host, its commands and Filter › Plug-ins.
+plugins = ["photocraft-engine/plugins", "photocraft-ui-egui/plugins"]
 # Open HEIC/HEIF photos (the optional craft-heif crate). Not default so distributors choose
 # it; official builds (CI, packaging/, release) build with `--features heif`.
 heif = ["photocraft-codecs/heif"]

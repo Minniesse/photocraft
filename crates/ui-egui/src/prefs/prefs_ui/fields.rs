@@ -120,7 +120,7 @@ pub(super) fn rules(ctx: &egui::Context) -> Vec<SettingRule> {
             } else if default.is_string() && prefs::is_color(&path) {
                 tweak(&mut rules, &path, |r| r.color());
             }
-            if prefs::HIDDEN_UNTIL_IMPLEMENTED.contains(&path.as_str()) {
+            if prefs::HIDDEN_UNTIL_IMPLEMENTED.contains(&path.as_str()) || prefs::left_out_of_build(&path) {
                 tweak(&mut rules, &path, |r| r.hidden());
             }
             if prefs::LINUX_ONLY.contains(&path.as_str()) {
@@ -306,5 +306,16 @@ mod language_label_tests {
         assert_eq!(language_label(&ctx, "தமிழ்", "ta"), "ta");
         assert_eq!(language_label(&ctx, "English", "en"), "English");
         assert!(!rules(&ctx).is_empty());
+    }
+
+    /// The KatWork build (no `plugins`): Preferences › Plugins shows no plug-in folder setting.
+    #[cfg(not(feature = "plugins"))]
+    #[test]
+    fn katwork_hidden_plugin_folder_preferences() {
+        let rules = rules(&egui::Context::default());
+        for key in ["plugIns.useAdditionalPluginsFolder", "plugIns.additionalPluginsFolder"] {
+            let rule = rules.iter().find(|r| r.key == key);
+            assert!(rule.is_some_and(|r| r.hidden), "{key} shows in a build without plug-ins");
+        }
     }
 }

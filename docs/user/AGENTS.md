@@ -1,13 +1,13 @@
 # User docs: rules for agents and contributors
 
-Everything in this folder (except this file, CLAUDE.md and README.md) is published at
-https://getartcraft.com/docs/photocraft. The file path is the URL:
+Everything in this folder (except this file, CLAUDE.md and README.md) is the user guide; upstream
+publishes it on its website, where the file path is the URL:
 `troubleshooting/taskbar-turns-black.md` → `/docs/photocraft/troubleshooting/taskbar-turns-black`.
 Renaming a file breaks links, so add the old path to `redirect_from` when you rename.
 
 ## Who reads this
 
-Artists using PhotoCraft, Discord mods answering them, and AI assistants looking things up for
+Artists using PhotoCraft, people answering their questions, and AI assistants looking things up for
 either. Write for an artist, not a developer.
 
 ## Page rules
@@ -18,10 +18,10 @@ either. Write for an artist, not a developer.
 - Link to other pages instead of repeating them. Use relative links to the `.md` file:
   `[Install PhotoCraft](../getting-started/install.md)`.
 - No marketing copy, no "simply", no claims you have not checked in the code or a release.
-- Call the product "PhotoCraft", as the app, its downloads and getartcraft.com do.
+- Call the product "PhotoCraft", as the app and its downloads do.
 - Name UI labels exactly as the app shows them, in **bold**. Menu paths read `File › Open…`.
 - Troubleshooting pages: `## Symptoms`, `## Fix`, `## Why this happens` (optional),
-  `## Still stuck?` (link the issue tracker or Discord).
+  `## Still stuck?` (link the issue tracker).
 
 ## Frontmatter
 

@@ -17,6 +17,10 @@ mod invoke;
 mod items;
 pub mod native_menu;
 pub mod parity;
+#[cfg(feature = "plugins")]
+pub mod plugin_ui;
+#[cfg(not(feature = "plugins"))]
+#[path = "menus/plugin_ui_off.rs"]
 pub mod plugin_ui;
 mod state;
 pub mod view_cmds;

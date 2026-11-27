@@ -656,8 +656,12 @@ fn history_name(n: &str) -> Option<&str> {
     if n.chars().any(|c| c.is_control() || matches!(c, '\u{2028}' | '\u{2029}')) {
         return None;
     }
-    let t = photocraft_plugins::manifest::trim_name(n);
-    photocraft_plugins::manifest::printable_name(t).then_some(t)
+    #[cfg(not(feature = "plugins"))]
+    use super::name_rules::{printable_name, trim_name};
+    #[cfg(feature = "plugins")]
+    use photocraft_plugins::manifest::{printable_name, trim_name};
+    let t = trim_name(n);
+    printable_name(t).then_some(t)
 }
 
 /// Selects the polygon `pts` with the lasso tools' `mode`, `antiAlias` and `feather` params, as

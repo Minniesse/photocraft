@@ -227,7 +227,10 @@ impl<'a> RuleFacts<'a> {
                 mask_targeted: s.tools.mask_targeted,
                 actions: (s.actions().list.revision(), s.recording.target, s.recording.playing),
                 undo_label: crate::actions::library::edit_undo_label(app),
+                #[cfg(feature = "plugins")]
                 plugins: photocraft_plugins::registry::revision(),
+                #[cfg(not(feature = "plugins"))]
+                plugins: 0,
             },
             ui: UiRuleFacts {
                 tool: ui.tool as u64,
